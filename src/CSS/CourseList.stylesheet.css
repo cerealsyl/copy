@@ -1,0 +1,32 @@
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.mt-110 {
+    margin-top: 110px;
+}
+.tx-center {
+    margin-top: 10px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-30 {
+    width: 30%
+}
+
+.color-bk {
+    color: black;
+
+}
+
+.pd-10 {
+    margin: 10px;
+}
+
+.bg-color-bk {
+    background-color: darkgrey;
+}
