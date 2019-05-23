@@ -1,6 +1,5 @@
 import {connect} from 'react-redux'
 import CourseEditor from '../component/CourseEditor'
-import React from 'react'
 
 
 const stateToPropertyMapper = (state, ownProps) => ({
@@ -10,7 +9,7 @@ const stateToPropertyMapper = (state, ownProps) => ({
 
 const dispatchToPropertyMapper = (dispatch) => (
     {
-        fetchSelectedCourse: (id) => console.log("dispatching") || dispatch({
+        fetchSelectedCourse: (id) =>  dispatch({
             type: "SELECT_COURSE",
             id: id
         }),

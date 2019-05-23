@@ -2,46 +2,31 @@ import React from 'react'
 import CourseRow from './CourseRow'
 
 
-// const CourseTable = ({courses, deleteCourse, selectCourse}) => {
-//     console.log(courses);
-//     return (
-//         <div>
-//             <table className="table container mt-80 table-borderless">
-//                 <tbody>
-//                 {courses.map(
-//                     (course) =>
-//                         <CourseRow
-//                             key={course.id}
-//                             course={course}
-//                             deleteCourse={deleteCourse}
-//                             selectCourse={selectCourse}
-//                         />
-//                 )
-//                 }
-//
-//                 </tbody>
-//             </table>
-//
-//         </div>
-//
-//     )
-// }
-class CourseTable extends React.Component {
+const CourseTable = ({courses, deleteCourse, selectCourse}) => {
+    console.log(courses);
+    return (
+        <div>
+            <table className="table container mt-80 table-borderless">
+                <tbody>
+                {courses.map(
+                    (course) =>
+                        <CourseRow
+                            key={course.id}
+                            course={course}
+                            deleteCourse={deleteCourse}
+                            selectCourse={selectCourse}
+                        />
+                )
+                }
 
-    componentWillReceiveProps(nextProps, nextContext) {
-        console.log("here")
-    }
+                </tbody>
+            </table>
 
-    render() {
-        console.log(this.props);
+        </div>
 
-        return (
-            <div></div>
-
-
-        )
-    }
+    )
 }
+
 
 export default CourseTable;
 

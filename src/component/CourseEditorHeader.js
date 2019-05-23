@@ -4,8 +4,6 @@ import '../CSS/CourseList.stylesheet.css';
 
 
 const CourseEditorHeader = ({course}) => {
-    console.log(course)
-    // console.log(course.title)
     return (
         <div className="w-100 bg-color-bk sticky-top" style={{height: 50}}>
             <div className="container-fluid">

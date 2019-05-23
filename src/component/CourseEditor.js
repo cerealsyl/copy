@@ -1,13 +1,14 @@
 import React from 'react'
 import CourseEditorHeader from "./CourseEditorHeader";
+import ModuleListContainer from '../container/ModuleListContainer'
+import LessonTabsContainer from '../container/LessonTabsContainer'
 
 
 class CourseEditor extends React.Component {
     constructor(props) {
-        console.log("mounted");
         super(props);
         this.state = {
-            courseId: this.props.courseId
+            courseId: this.props.courseId,
         }
     }
 
@@ -17,54 +18,48 @@ class CourseEditor extends React.Component {
 
 
     render() {
-        console.log("logging props", this.props)
-        let display = ""
+
+        let displayModule = "";
+        let displayLesson = "";
+        // if (this.state.selectModule !== null) {
+        //
+        //
+        // } else {
+        //     displayLesson = <div>
+        //         <h4>Please select a module</h4>
+        //     </div>
+        // }
+
         if (this.props.course !== null) {
-            display = <div>
-                <CourseEditorHeader course={this.props.course}/>
-                <h3>hey</h3>
-            </div>
+            displayModule =
+                <div>
+                    <CourseEditorHeader course={this.props.course}/>
+                    <div className="container">
+                        <div className="row mt-3">
+                            <div className="col-4">
+                                <ModuleListContainer/>
+                            </div>
+                        </div>
+                        <div className="col-8">
+                            <LessonTabsContainer/>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
         } else {
-            display = <div><h3>No course selected</h3></div>
+            displayModule = <div><h3>No course selected</h3></div>
         }
 
+
         return (
-            <div>{display}</div>
+            <div>{displayModule}</div>
 
 
         )
     }
 }
 
-// const CourseEditor = ({courses}) => {
-//     return (
-//         <div>
-//             <CourseEditorHeader course={}/>
-//             {/*<div className="container">*/}
-//             {/*    <div className="row mt-3">*/}
-//             {/*        <div className="col-4">*/}
-//             {/*            <ModuleList*/}
-//             {/*                modules={this.state.currentCourse.modules}*/}
-//             {/*                selectModule={this.selectModule}/>*/}
-//             {/*        </div>*/}
-//             {/*        <div className="col-8">*/}
-//             {/*            <div>*/}
-//             {/*                <h3>Lessons: </h3>*/}
-//
-//             {/*            </div>*/}
-//             {/*            {this.state.currentModule === "" ? (*/}
-//             {/*                <h5>Please choose a module</h5>*/}
-//             {/*            ) : (<LessonTabs module={this.state.currentModule}/>)}*/}
-//             {/*            <div>*/}
-//
-//             {/*            </div>*/}
-//
-//             {/*        </div>*/}
-//
-//             {/*    </div>*/}
-//             {/*</div>*/}
-//         </div>
-//     )
-// }
-//
-export default CourseEditor
+export default CourseEditor;

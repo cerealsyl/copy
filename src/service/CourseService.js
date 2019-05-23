@@ -87,7 +87,7 @@ export default class CourseService {
     }
 
     createCourse = course => {
-        this.courses.push(course);
+        this.courses = [...this.courses, course]
         return this.findAllCourses();
     }
 
@@ -112,7 +112,9 @@ export default class CourseService {
     updateCourse = (id, course) => {
         this.deleteCourse(id)
         this.createCourse(course)
-        return this.findAllCourses();
+
     }
+
+
 
 }
