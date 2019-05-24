@@ -3,11 +3,11 @@ import CourseService from '../service/CourseService'
 let courseService = CourseService.getInstance();
 
 
-const CourseEditorReducer = (state = {course: null, module: null}, action) => {
+const CourseEditorReducer = (state = {course: null, module: null, lesson: null}, action) => {
     switch (action.type) {
         case "SELECT_COURSE":
 
-            const selectedCourse = {course: courseService.findCourseById(action.id), module: state.module};
+            const selectedCourse = {course: courseService.findCourseById(action.id), module: state.module, lesson: state.lesson};
             return selectedCourse;
 
         case "CREATE_MODULE":
@@ -26,7 +26,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                     modules: currentModules
                 };
                 courseService.updateCourse(state.course.id, newCourse);
-                const newState1 = {course: courseService.findCourseById(currentCourse.id),  module: state.module}
+                const newState1 = {course: courseService.findCourseById(currentCourse.id),  module: state.module, lesson: state.lesson}
                 console.log(newState1)
                 return newState1;
             } else {
@@ -41,7 +41,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                 modules: currentModules1
             }
             courseService.updateCourse(state.course.id, newCourse1);
-            const newState2 = {course: courseService.findCourseById(currentCourse1.id),  module: state.module}
+            const newState2 = {course: courseService.findCourseById(currentCourse1.id),  module: state.module, lesson: state.lesson}
             return newState2;
         case "EDIT_MODULE":
             console.log(state)
@@ -68,7 +68,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                 modules: temp
             };
 
-            return {course: newCourse3,  module: state.module};
+            return {course: newCourse3,  module: state.module, lesson: state.lesson};
         case "SELECT_MODULE":
             let targetModule = '';
             for(let i = 0; i < state.course.modules.length; i++) {
@@ -77,7 +77,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                 }
             }
 
-            return {course: state.course, module: targetModule};
+            return {course: state.course, module: targetModule, lesson: state.lesson};
 
         case "CREATE_LESSON":
             const newLesson = {
@@ -93,7 +93,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                 lessons: currentModuleLessons
             }
 
-            return {course: state.course, module: newModule}
+            return {course: state.course, module: newModule, lesson: state.lesson}
 
         case "DELETE_LESSON":
             const currentModuleLessons1 = state.module.lessons;
@@ -103,7 +103,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                 title: state.module.title,
                 lessons: newModuleLessons1
             }
-            const newState6 = {course: state.course, module: newModule1}
+            const newState6 = {course: state.course, module: newModule1, lesson: state.lesson}
 
             return newState6;
         case "UPDATE_LESSON":
@@ -124,9 +124,15 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
                     return lesson;
                 }
             })
-
-            return {course: state.course, module: newModule2}
-
+            return {course: state.course, module: newModule2, lesson: state.lesson}
+        case "SELECT_LESSON":
+            let targetLesson = "";
+            for(let i=0; i < state.module.lessons.length; i++) {
+                if(state.module.lessons[i].id === action.id) {
+                    targetLesson = state.module.lessons[i]
+                }
+            }
+            return {course: state.course, module: state.module, lesson: targetLesson}
 
 
         default:

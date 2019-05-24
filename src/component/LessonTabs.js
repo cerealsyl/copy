@@ -1,4 +1,5 @@
 import React from 'react'
+import TopicPillsContainer from "../container/TopicPillsContainer";
 
 const NewLessonFld = ({onCreateLesson, onChange, value}) =>
     <li className="nav-item ml-5">
@@ -22,7 +23,6 @@ export default class LessonTabs extends React.Component {
             inputValue: "",
             selectedLesson: "",
             editingLesson: "",
-            module: this.props.module,
             editMode: false,
             newLessonTitle: ""
         }
@@ -83,6 +83,7 @@ export default class LessonTabs extends React.Component {
                 {this.props.module === null ? (
                     <div>No Module selected </div>
                 ) : (
+                    <div>
                     <ul className="nav nav-tabs">
                         {this.props.module.lessons.map((lesson, index) => {
                             return (
@@ -100,7 +101,7 @@ export default class LessonTabs extends React.Component {
                                             ></i>
                                         </div>
                                         ) : (
-                                        <a className={`nav-link color-bk ${selectedLesson === lesson ? "active" : ""}`} href="#">
+                                        <a onClick={() => this.props.selectLesson(lesson.id)} className={`nav-link color-bk ${selectedLesson === lesson ? "active" : ""}`} href="#">
                                             {lesson.title}
                                             <i onClick={() => this.props.deleteLesson(lesson.id)}
                                                className="fa fa-minus-circle ml-2 mt-1"
@@ -118,7 +119,11 @@ export default class LessonTabs extends React.Component {
                             value={this.state.inputValue}
                         />
                     </ul>
+                        {this.state.selectedLesson ? <TopicPillsContainer/> : <div> Please Select A Lesson To Display Topics</div>}
+                    </div>
+
                 )}
+
             </div>
         )
     }

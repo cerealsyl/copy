@@ -24,6 +24,10 @@ const dispatchToPropertyMapper = (dispatch) => (
             type: "UPDATE_LESSON",
             title: title,
             id: id
+        }),
+        selectLesson: (id) => dispatch({
+            type: "SELECT_LESSON",
+            id: id
         })
     }
 

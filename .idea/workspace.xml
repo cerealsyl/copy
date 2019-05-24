@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85cc3566-658c-40ef-89d0-6d54d46dce2d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/component/TopicPills.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/container/TopicPillsContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/component/LessonTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/component/LessonTabs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/container/LessonTabsContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/container/LessonTabsContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducer/CourseEditorReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer/CourseEditorReducer.js" afterDir="false" />
@@ -16,23 +19,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.47427768">
       <split-first>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/component/LessonTabs.js">
+            <entry file="file://$PROJECT_DIR$/src/component/TopicPills.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="277">
-                  <caret line="91" column="57" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/reducer/CourseEditorReducer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+                <state relative-caret-position="90">
+                  <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -41,11 +35,23 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/container/LessonTabsContainer.js">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/component/LessonTabs.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+                <state relative-caret-position="60">
+                  <caret line="4" selection-start-line="4" selection-end-line="14" selection-end-column="9" />
+                  <folding>
+                    <element signature="e#0#25#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/container/TopicPillsContainer.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
                   <folding>
                     <element signature="e#0#35#0" expanded="true" />
                   </folding>
@@ -104,13 +110,14 @@
         <option value="$PROJECT_DIR$/src/container/LessonTabsContainer.js" />
         <option value="$PROJECT_DIR$/src/reducer/CourseEditorReducer.js" />
         <option value="$PROJECT_DIR$/src/component/LessonTabs.js" />
+        <option value="$PROJECT_DIR$/src/container/TopicPillsContainer.js" />
+        <option value="$PROJECT_DIR$/src/component/TopicPills.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="y" value="23" />
-    <option name="width" value="1412" />
+    <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -209,20 +216,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1558469153525</updated>
-      <workItem from="1558469155361" duration="97652000" />
+      <workItem from="1558469155361" duration="100227000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97652000" />
+    <option name="totallyTimeSpent" value="100227000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="46" y="23" width="1412" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20201294" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20084566" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
@@ -536,8 +543,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/container/LessonTabsContainer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="285">
+          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -546,15 +553,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducer/CourseEditorReducer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="878">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/component/LessonTabs.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="91" column="57" selection-start-line="91" selection-start-column="57" selection-end-line="91" selection-end-column="57" />
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="14" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/container/TopicPillsContainer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/component/TopicPills.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
         </state>
       </provider>
     </entry>
