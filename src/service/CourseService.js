@@ -75,7 +75,13 @@ export default class CourseService {
         {
             "id": "234",
             "title": "CS5200",
-            "modules": []
+            "modules": [
+                {
+                    id: "module11",
+                    title: "week 5",
+                    lessons: []
+            }
+            ]
         }
     ];
 

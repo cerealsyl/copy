@@ -20,15 +20,6 @@ class CourseEditor extends React.Component {
     render() {
 
         let displayModule = "";
-        let displayLesson = "";
-        // if (this.state.selectModule !== null) {
-        //
-        //
-        // } else {
-        //     displayLesson = <div>
-        //         <h4>Please select a module</h4>
-        //     </div>
-        // }
 
         if (this.props.course !== null) {
             displayModule =
@@ -39,13 +30,11 @@ class CourseEditor extends React.Component {
                             <div className="col-4">
                                 <ModuleListContainer/>
                             </div>
+                            <div className="col-8">
+                                <LessonTabsContainer/>
+                            </div>
                         </div>
-                        <div className="col-8">
-                            <LessonTabsContainer/>
 
-
-
-                        </div>
 
                     </div>
                 </div>

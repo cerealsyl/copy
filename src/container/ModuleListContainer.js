@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import ModuleList from '../component/ModuleList'
 
 const stateToPropertyMapper = (state) => ({
-    modules: state.CourseEditorReducer.course.modules
+    course: state.CourseEditorReducer.course
 })
 
 const dispatchToPropertyMapper = (dispatch) => ({

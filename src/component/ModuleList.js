@@ -14,14 +14,14 @@ class ModuleList extends React.Component {
 
     componentDidMount() {
         this.setState({
-            modules: this.props.modules
+            modules: this.props.course.modules
         })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps !== this.props) {
             this.setState({
-                modules: this.props.modules
+                modules: this.props.course.modules
             })
         }
     }
@@ -41,11 +41,11 @@ class ModuleList extends React.Component {
     };
 
     render() {
+
         console.log(this.state.modules)
 
         let display = ""
         if (this.state.modules !== '') {
-            if (this.state.modules.length )
             display =
                 <div>
                     <h4>Module:</h4>
