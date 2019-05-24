@@ -3,11 +3,11 @@ import CourseService from '../service/CourseService'
 let courseService = CourseService.getInstance();
 
 
-const CourseEditorReducer = (state = {course: null, module: null, lesson: null}, action) => {
+const CourseEditorReducer = (state = {course: null, module: null, lesson: null, topic: null}, action) => {
     switch (action.type) {
         case "SELECT_COURSE":
 
-            const selectedCourse = {course: courseService.findCourseById(action.id), module: state.module, lesson: state.lesson};
+            const selectedCourse = {course: courseService.findCourseById(action.id), module: state.module, lesson: state.lesson, topic: state.topic};
             return selectedCourse;
 
         case "CREATE_MODULE":
@@ -26,8 +26,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                     modules: currentModules
                 };
                 courseService.updateCourse(state.course.id, newCourse);
-                const newState1 = {course: courseService.findCourseById(currentCourse.id),  module: state.module, lesson: state.lesson}
-                console.log(newState1)
+                const newState1 = {course: courseService.findCourseById(currentCourse.id),  module: null, lesson: state.lesson, topic: state.topic}
                 return newState1;
             } else {
                 return state;
@@ -41,7 +40,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                 modules: currentModules1
             }
             courseService.updateCourse(state.course.id, newCourse1);
-            const newState2 = {course: courseService.findCourseById(currentCourse1.id),  module: state.module, lesson: state.lesson}
+            const newState2 = {course: courseService.findCourseById(currentCourse1.id),  module: null, lesson: state.lesson, topic: state.topic}
             return newState2;
         case "EDIT_MODULE":
             console.log(state)
@@ -68,7 +67,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                 modules: temp
             };
 
-            return {course: newCourse3,  module: state.module, lesson: state.lesson};
+            return {course: newCourse3,  module: state.module, lesson: state.lesson, topic: state.topic};
         case "SELECT_MODULE":
             let targetModule = '';
             for(let i = 0; i < state.course.modules.length; i++) {
@@ -77,7 +76,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                 }
             }
 
-            return {course: state.course, module: targetModule, lesson: state.lesson};
+            return {course: state.course, module: targetModule, lesson: null, topic: state.topic};
 
         case "CREATE_LESSON":
             const newLesson = {
@@ -93,7 +92,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                 lessons: currentModuleLessons
             }
 
-            return {course: state.course, module: newModule, lesson: state.lesson}
+            return {course: state.course, module: newModule, lesson: state.lesson, topic: state.topic}
 
         case "DELETE_LESSON":
             const currentModuleLessons1 = state.module.lessons;
@@ -103,8 +102,8 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                 title: state.module.title,
                 lessons: newModuleLessons1
             }
-            const newState6 = {course: state.course, module: newModule1, lesson: state.lesson}
-
+            const newState6 = {course: state.course, module: newModule1, lesson: state.lesson, topic: state.topic}
+            console.log("inside delete lesson", newState6)
             return newState6;
         case "UPDATE_LESSON":
             let newModule2 = {
@@ -124,7 +123,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                     return lesson;
                 }
             })
-            return {course: state.course, module: newModule2, lesson: state.lesson}
+            return {course: state.course, module: newModule2, lesson: state.lesson, topic: state.topic}
         case "SELECT_LESSON":
             let targetLesson = "";
             for(let i=0; i < state.module.lessons.length; i++) {
@@ -132,9 +131,53 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null},
                     targetLesson = state.module.lessons[i]
                 }
             }
-            return {course: state.course, module: state.module, lesson: targetLesson}
+            return {course: state.course, module: state.module, lesson: targetLesson, topic: state.topic}
+        case "CREATE_TOPIC":
+           const currentTopics = state.lesson.topics
+            console.log(currentTopics)
 
+            currentTopics.push({
+                id: "topic" + (new Date().getTime().toString()),
+                title: action.title,
+                widgets: []
+            });
+            const newLesson1 = {
+                id: state.lesson.id,
+                title: state.lesson.title,
+                topics: currentTopics
+            };
 
+            return {course: state.course, module: state.module, lesson:newLesson1, topic: state.topic};
+        case "SELECT_TOPIC":
+            let targetTopic = state.lesson.topics.filter(topic => topic.id === action.id);
+            return {course: state.course, module: state.module, lesson: state.lesson, topic: targetTopic};
+        case "DELETE_TOPIC":
+            let targetTopic1 = state.lesson.topics.filter(topic => topic.id !== action.id);
+            let newLesson3 = {
+                id: state.lesson.id,
+                title: state.lesson.title,
+                topics: targetTopic1
+            };
+            return {course: state.course, module: state.module, lesson: newLesson3, topic: state.topic};
+        case "UPDATE_TOPIC":
+            let newLesson4 = {
+                ...state.lesson,
+            }
+            newLesson4.topics = newLesson4.topics.map(topic => {
+                if(topic.id === action.id) {
+                    const newTopic = {
+                        id: topic.id,
+                        title: action.title,
+                        widgets: topic.widgets
+                    }
+                    console.log("newTopic", newTopic)
+                    return newTopic;
+                } else {
+                    return topic;
+                }
+            })
+            console.log(newLesson4)
+            return {course: state.course, module: state.module, lesson: newLesson4, topic: state.topic}
         default:
             return state;
     }

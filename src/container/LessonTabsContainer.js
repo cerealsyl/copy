@@ -2,11 +2,9 @@ import {connect} from 'react-redux'
 import LessonTabs from '../component/LessonTabs'
 
 const stateToPropertyMapper = (state) => {
-    // if(state.module === null) {
-    //     return {module: null}
-    // } else {
+    console.log("inside lesson tabs", state.CourseEditorReducer)
         return {module: state.CourseEditorReducer.module}
-    // }
+
 
 }
 

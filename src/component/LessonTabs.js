@@ -6,7 +6,7 @@ const NewLessonFld = ({onCreateLesson, onChange, value}) =>
         <div className="row">
             <input onChange={onChange}
                    value={value}
-                   className="col-6 form-control mt-1"
+                   className="col-6 form-control"
                    placeholder="new lesson"/>
             <i onClick={onCreateLesson}
                className="fa fa-plus-square-o fa-lg mt-3 ml-2"
@@ -27,6 +27,13 @@ export default class LessonTabs extends React.Component {
             newLessonTitle: ""
         }
 
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps !== this.props) {
+            this.setState({
+                selectedLesson: ""
+            })
+        }
     }
 
     selectLesson = (lesson) => {
@@ -67,7 +74,7 @@ export default class LessonTabs extends React.Component {
         })
     }
 
-    handleLessonTitleChanged =(event) => {
+    handleLessonTitleChanged = (event) => {
         this.setState({
             newLessonTitle: event.target.value
         })
@@ -93,21 +100,17 @@ export default class LessonTabs extends React.Component {
                                             <input onChange={this.handleLessonTitleChanged}
                                                    value={this.state.newLessonTitle}
                                                 className="col-5"/>
-                                            <i onClick={() => this.props.deleteLesson(lesson.id)}
-                                            className="fa fa-minus-circle ml-2 mt-2"
-                                            aria-hidden="true"></i>
                                             <i onClick={() => this.updateLessonName(lesson.id)}
-                                                className="fa fa-check ml-1 mt-2" aria-hidden="true"
-                                            ></i>
+                                                className="fa fa-check ml-1 mt-2" aria-hidden="true"></i>
                                         </div>
                                         ) : (
                                         <a onClick={() => this.props.selectLesson(lesson.id)} className={`nav-link color-bk ${selectedLesson === lesson ? "active" : ""}`} href="#">
                                             {lesson.title}
                                             <i onClick={() => this.props.deleteLesson(lesson.id)}
-                                               className="fa fa-minus-circle ml-2 mt-1"
+                                               className="fa fa-trash-o ml-2 mt-1"
                                                aria-hidden="true"></i>
                                             <i onClick={() => this.enterEditMode(lesson)}
-                                               className="fa fa-pencil m-1" aria-hidden="true"></i>
+                                               className="fa fa-pencil m-1 ml-2" aria-hidden="true"></i>
                                         </a>
                                     )}
                                 </li>
@@ -119,7 +122,8 @@ export default class LessonTabs extends React.Component {
                             value={this.state.inputValue}
                         />
                     </ul>
-                        {this.state.selectedLesson ? <TopicPillsContainer/> : <div> Please Select A Lesson To Display Topics</div>}
+                        <TopicPillsContainer/>
+                        {/*{this.state.selectedLesson ? <TopicPillsContainer/> : <div></div>}*/}
                     </div>
 
                 )}

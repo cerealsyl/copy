@@ -42,8 +42,6 @@ class ModuleList extends React.Component {
 
     render() {
 
-        console.log(this.state.modules)
-
         let display = ""
         if (this.state.modules !== '') {
             display =

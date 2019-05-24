@@ -27,6 +27,17 @@
     margin: 10px;
 }
 
-.bg-color-bk {
-    background-color: darkgrey;
+.bg-color {
+    background-color: #b8e2fc;
+}
+
+.btn-primary {
+    background-color: papayawhip !important;
+    border-color: papayawhip !important;
+    color: black !important;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: papayawhip !important;
+    color: black !important;
 }
