@@ -19,6 +19,11 @@ const dispatchToPropertyMapper = (dispatch) => (
         deleteLesson: (id) => dispatch({
             type: "DELETE_LESSON",
             lessonId: id
+        }),
+        updateLesson: (id, title) => dispatch({
+            type: "UPDATE_LESSON",
+            title: title,
+            id: id
         })
     }
 

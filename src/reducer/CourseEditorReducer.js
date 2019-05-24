@@ -97,9 +97,7 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
 
         case "DELETE_LESSON":
             const currentModuleLessons1 = state.module.lessons;
-            console.log(action.lessonId)
             const newModuleLessons1 = currentModuleLessons1.filter(lesson => lesson.id !== action.lessonId)
-            console.log("newLesson", newModuleLessons1)
             const newModule1 = {
                 id: state.module.id,
                 title: state.module.title,
@@ -108,6 +106,27 @@ const CourseEditorReducer = (state = {course: null, module: null}, action) => {
             const newState6 = {course: state.course, module: newModule1}
 
             return newState6;
+        case "UPDATE_LESSON":
+            let newModule2 = {
+                ...state.module,
+            }
+            newModule2.lessons = newModule2.lessons.map(lesson => {
+                if(lesson.id === action.id) {
+                    console.log(lesson)
+                    const newLesson = {
+                        id: lesson.id,
+                        title: action.title,
+                        topics: lesson.topics
+                    }
+                    console.log("newLesson", newLesson)
+                    return newLesson;
+                } else {
+                    return lesson;
+                }
+            })
+
+            return {course: state.course, module: newModule2}
+
 
 
         default:

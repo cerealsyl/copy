@@ -1,5 +1,18 @@
 import React from 'react'
 
+const NewLessonFld = ({onCreateLesson, onChange, value}) =>
+    <li className="nav-item ml-5">
+        <div className="row">
+            <input onChange={onChange}
+                   value={value}
+                   className="col-6 form-control mt-1"
+                   placeholder="new lesson"/>
+            <i onClick={onCreateLesson}
+               className="fa fa-plus-square-o fa-lg mt-3 ml-2"
+               aria-hidden="true"></i>
+        </div>
+    </li>
+
 
 export default class LessonTabs extends React.Component {
     constructor(props) {
@@ -8,8 +21,10 @@ export default class LessonTabs extends React.Component {
         this.state = {
             inputValue: "",
             selectedLesson: "",
+            editingLesson: "",
             module: this.props.module,
-            editMode: false
+            editMode: false,
+            newLessonTitle: ""
         }
 
     }
@@ -19,125 +34,93 @@ export default class LessonTabs extends React.Component {
             selectedLesson: lesson
         })
 
-    }
+    };
 
-    addNewLesson = (event) => {
+    handleNewLessonInputChanged = (event) => {
         this.setState({
             inputValue: event.target.value
         })
-    }
+    };
 
     createLesson = () => {
         this.props.createLesson(this.state.inputValue)
-        this.state.inputValue = ""
-    }
+        this.setState({
+            inputValue : ""
+        })
+    };
 
-    enterEditMode = () => {
+
+
+    enterEditMode = (lesson) => {
         console.log('here')
         this.setState({
-            editMode: true
+            editingLesson: lesson
         })
 
+    }
+    updateLessonName = (id) => {
+        console.log("inputValue", this.state.newLessonTitle)
+        this.props.updateLesson(id, this.state.newLessonTitle)
+        this.setState({
+            editingLesson: null,
+            newLessonTitle: ""
+        })
+    }
+
+    handleLessonTitleChanged =(event) => {
+        this.setState({
+            newLessonTitle: event.target.value
+        })
     }
 
 
     render() {
-        let displayLessons = '';
 
-        let titleFld = '';
-
-        if (this.props.module !== null) {
-            if (this.props.module.lessons.length > 0) {
-                displayLessons =
-                    <div>
-                        <ul className="nav nav-pills">
-                            {
-                                this.props.module.lessons.map(
-                                    (lesson, index) => {
-                                        if (this.state.selectedLesson === null) {
-                                                return (
-                                                    <li key={index} onClick={() => {
-                                                        this.selectLesson(lesson)
-                                                    }} className="nav-item">
-                                                        <a className="nav-link color-bk" href="#">
-                                                            {lesson.title}
-                                                            <i onClick={() => this.props.deleteLesson(lesson.id)}
-                                                               className="fa fa-minus-circle ml-2 mt-1"
-                                                               aria-hidden="true"></i>
-                                                            <i onClick={() => this.enterEditMode()}
-                                                               className="fa fa-pencil m-1" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                )
-
-                                            } else {
-                                                return (
-                                                    <li key={index} onClick={() => this.selectLesson(lesson)}
-                                                        className="nav-item">
-                                                        <a className={lesson === this.state.selectedLesson ? "nav-link active color-bk" : "nav-link color-bk"}
-                                                           href="#">
-                                                            {lesson.title}
-                                                            <i onClick={() => this.props.deleteLesson(lesson.id)}
-                                                               className="fa fa-minus-circle ml-1 mr-2"
-                                                               aria-hidden="true"></i>
-                                                            <i onClick={() => this.enterEditMode(lesson.id)}
-                                                               className="fa fa-pencil ml-1" aria-hidden="true"></i>
-                                                        </a>
-                                                    </li>
-                                                )
-
-
-                                            }
-
-                                        }
-
-                                )
-                            }
-
-                            <li className="nav-item ml-5">
-                                <div className="row">
-                                    <input onChange={this.addNewLesson}
-                                           value={this.state.inputValue}
-                                           className="col-6 form-control mt-1"
-                                           placeholder="new lesson"/>
-                                    <i onClick={this.createLesson}
-                                       className="fa fa-plus-square-o fa-lg mt-3 ml-2"
-                                       aria-hidden="true"></i>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-            } else {
-                displayLessons =
-                    <div>
-                        <h4>Current Module has no lesson</h4>
-                        <h5>Add New Lesson Here: </h5>
-                        <ul className="nav nav-pills">
-                            <li className="nav-item ml-5">
-                                <div className="row">
-                                    <input onChange={this.addNewLesson}
-                                           value={this.state.inputValue}
-                                           className="col-6 form-control mt-1"
-                                           placeholder="new lesson"/>
-                                    <i onClick={this.createLesson}
-                                       className="fa fa-plus-square-o fa-lg mt-3 ml-2"
-                                       aria-hidden="true"></i>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-            }
-
-        } else {
-            displayLessons =
-                <div> No Module selected </div>
-        }
+        const { selectedLesson, editingLesson } = this.state;
 
         return (
-            <div>{displayLessons}</div>
+            <div>
+                {this.props.module === null ? (
+                    <div>No Module selected </div>
+                ) : (
+                    <ul className="nav nav-tabs">
+                        {this.props.module.lessons.map((lesson, index) => {
+                            return (
+                                <li key={index} onClick={() => {this.selectLesson(lesson)}} className="nav-item">
+                                    {lesson === editingLesson ? (
+                                        <div className="row">
+                                            <input onChange={this.handleLessonTitleChanged}
+                                                   value={this.state.newLessonTitle}
+                                                className="col-5"/>
+                                            <i onClick={() => this.props.deleteLesson(lesson.id)}
+                                            className="fa fa-minus-circle ml-2 mt-2"
+                                            aria-hidden="true"></i>
+                                            <i onClick={() => this.updateLessonName(lesson.id)}
+                                                className="fa fa-check ml-1 mt-2" aria-hidden="true"
+                                            ></i>
+                                        </div>
+                                        ) : (
+                                        <a className={`nav-link color-bk ${selectedLesson === lesson ? "active" : ""}`} href="#">
+                                            {lesson.title}
+                                            <i onClick={() => this.props.deleteLesson(lesson.id)}
+                                               className="fa fa-minus-circle ml-2 mt-1"
+                                               aria-hidden="true"></i>
+                                            <i onClick={() => this.enterEditMode(lesson)}
+                                               className="fa fa-pencil m-1" aria-hidden="true"></i>
+                                        </a>
+                                    )}
+                                </li>
+                            )
+                        })}
+                        <NewLessonFld
+                            onChange={this.handleNewLessonInputChanged}
+                            onCreateLesson={this.createLesson}
+                            value={this.state.inputValue}
+                        />
+                    </ul>
+                )}
+            </div>
         )
     }
-
 }
 
