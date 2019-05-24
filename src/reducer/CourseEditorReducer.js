@@ -147,7 +147,7 @@ const CourseEditorReducer = (state = {course: null, module: null, lesson: null, 
                 topics: currentTopics
             };
 
-            return {course: state.course, module: state.module, lesson:newLesson1, topic: state.topic};
+            return {course: state.course, module: state.module, lesson: newLesson1, topic: state.topic};
         case "SELECT_TOPIC":
             let targetTopic = state.lesson.topics.filter(topic => topic.id === action.id);
             return {course: state.course, module: state.module, lesson: state.lesson, topic: targetTopic};

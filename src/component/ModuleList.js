@@ -54,7 +54,7 @@ class ModuleList extends React.Component {
                                 className="form-control"
                                    placeholder="New Modules"/>
                             <button onClick={() => {this.props.createModule(this.state.title); this.clearInputFld()}}
-                                className="btn btn-primary btn-block">
+                                    className="btn btn-primary btn-block module-list-add-button">
                                 Add Module
                             </button>
 

@@ -49,11 +49,11 @@ class ModuleItem extends React.Component {
         if (this.state.editMode === false) {
             display = <li className="list-group-item">
                 <div className="row">
-                    <div className="col-7" onClick={() => this.props.selectModule(this.props.module.id)}>
+                    <div className="col-7 module-item-title" onClick={() => this.props.selectModule(this.props.module.id)}>
                         {this.state.moduleTitle}
                     </div>
                     <div className="float-right col-5">
-                        <i onClick={() => this.editModule()} className="color-bk fa fa-edit fa-lg mr-1"></i>
+                        <i onClick={() => this.editModule()} className="icons color-bk fa fa-edit fa-lg mr-1"></i>
                         <i onClick={() => this.props.deleteModule(this.props.module.id)}
                            className="fa fa-trash-o fa-lg"></i>
                     </div>

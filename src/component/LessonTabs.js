@@ -52,7 +52,8 @@ export default class LessonTabs extends React.Component {
     createLesson = () => {
         this.props.createLesson(this.state.inputValue)
         this.setState({
-            inputValue : ""
+            inputValue : "",
+            selectedLesson: ""
         })
     };
 
@@ -88,7 +89,7 @@ export default class LessonTabs extends React.Component {
         return (
             <div>
                 {this.props.module === null ? (
-                    <div>No Module selected </div>
+                    <div className="text-lg-center text-md-center text-sm-center">No Module selected </div>
                 ) : (
                     <div>
                     <ul className="nav nav-tabs">
@@ -99,7 +100,7 @@ export default class LessonTabs extends React.Component {
                                         <div className="row">
                                             <input onChange={this.handleLessonTitleChanged}
                                                    value={this.state.newLessonTitle}
-                                                className="col-5"/>
+                                                    className="col-5"/>
                                             <i onClick={() => this.updateLessonName(lesson.id)}
                                                 className="fa fa-check ml-1 mt-2" aria-hidden="true"></i>
                                         </div>

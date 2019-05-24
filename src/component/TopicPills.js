@@ -70,7 +70,7 @@ export default class TopicPills extends React.Component {
         return (
             <div>
                 {(this.props.lesson === null || this.props.lesson === undefined) ? (
-                    <div>No Lesson selected</div>
+                    <div className="mt-4 text-sm-center text-md-center text-lg-center">No Lesson selected</div>
                 ) : (
                     <ul className="mt-4 nav nav-pills nav-fill">
                         {this.props.lesson.topics.map(
